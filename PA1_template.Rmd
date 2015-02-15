@@ -19,7 +19,7 @@ sumSteps <- aggregate(data = completeSteps, steps ~ date, FUN = "sum")
 ```
 
 Histogram of Steps taken per day:
-```{r, echo=TRUE}
+```{r 1. Histogram of Steps Taken per day, echo=TRUE}
 hist(sumSteps$steps, col = "blue", main = "Histogram of Steps Taken per day", xlab = "")
 ```
 
@@ -30,7 +30,7 @@ median(sumSteps$steps)
 ```
 
 **Observing the daily average activity pattern:**
-```{r, echo=TRUE}
+```{r 2. Time-Series of daily average activity pattern, echo=TRUE}
 intervalSteps <- aggregate(data = completeSteps, steps ~ interval, FUN = "mean")
 with(intervalSteps, plot(x = interval, y = steps, type = "l", main = "Daily Average Activity Pattern on 5 Min Intervals"))
 ```
@@ -54,7 +54,7 @@ sumSteps <- aggregate(data = imputeData, steps.x ~ date, FUN = "sum")
 ```
 
 Histogram of Steps taken per day from imputed data:
-```{r, echo=TRUE}
+```{r 3. Histogram of Steps Taken per day after Imputing, echo=TRUE}
 hist(sumSteps$steps.x, col = "green", main = "Histogram of Steps Taken per day", xlab = "")
 ```
 
@@ -65,7 +65,7 @@ median(sumSteps$steps.x)
 ```
 
 **Observing activity patterns between weekdays and weekends:**
-```{r, echo=TRUE}
+```{r 4. Observing activity patterns between weekdays and weekends, echo=TRUE}
 imputeData$wd <- weekdays(imputeData$date)
 imputeData$wd[which(imputeData$wd %in% c("Monday","Tuesday","Wednesday","Thursday","Friday"))] <- "weekday"
 imputeData$wd[which(imputeData$wd %in% c("Sunday","Saturday"))] <- "weekend"
